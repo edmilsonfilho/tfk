@@ -6,6 +6,8 @@
  */
 package org.tfk;
 
+import org.tfk.ui.*;
+
 /**
  * The main class Tfk.
  *
@@ -20,11 +22,10 @@ public class Tfk {
     * @param String[] args
     **/
     public static void main(String[] args){
-        System.out.println("Ao infinito e além");
-        System.out.println("Aprendendo Git");
-        System.out.println("Javatfk");
-        System.out.println("FidiBequi");
-        System.out.println("Carinha feliz :)");
+
+        Game game = new Game();
+        game.initComponents();
+
     }
 
 }
