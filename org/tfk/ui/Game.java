@@ -8,6 +8,9 @@ package org.tfk.ui;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
+import javax.swing.JMenuBar;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
 import java.util.ResourceBundle;
 import java.util.Locale;
 
@@ -21,6 +24,9 @@ public class Game {
 
     private JFrame frame;
     private JButton buttonCredits;
+    private JMenuBar menuBar;
+    private JMenu menuOptions;
+    private JMenuItem menuItemExit;
 
     public Game() {
 
@@ -36,12 +42,23 @@ public class Game {
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800,600);
-        frame.setVisible(true);
+
+        //Menu Bar
+        menuBar = new JMenuBar();
+        frame.setJMenuBar(menuBar);
+
+        //Menu Bar Itens
+        menuOptions = new JMenu(myResources.getString("menuOptions"));
+        menuBar.add(menuOptions);
+        JMenuItem menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
+        menuOptions.add(menuItemExit);
+
+        frame.setVisible(true); //set visible after MenuBar and before buttons
 
         //Button Credits
         buttonCredits = new JButton(myResources.getString("buttonCredits"));
         buttonCredits.setBounds(10, 10, 170, 30);
-        frame.add(buttonCredits);
+        frame.add(buttonCredits);        
     }
 
 }
