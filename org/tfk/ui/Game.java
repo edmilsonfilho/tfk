@@ -29,7 +29,7 @@ public class Game {
     public void initComponents() {
 
         Locale currentLocale = new Locale("pt", "BR");
-        ResourceBundle myResources =  ResourceBundle.getBundle("messages.properties", currentLocale);
+        ResourceBundle myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
 
         //Frame
         frame = new JFrame();
