@@ -1,2 +1,7 @@
 *.class
 .DS_Store
+
+# Ignore . and ~ files except .gitignore #
+*~
+.*
+!/.gitignore
