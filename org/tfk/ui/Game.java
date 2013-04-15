@@ -43,7 +43,7 @@ public class Game {
         frame = new JFrame();
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(400,350);
+        frame.setSize(800, 600);
 
         //Menu Bar
         menuBar = new JMenuBar();
@@ -54,18 +54,18 @@ public class Game {
         menuBar.add(menuOptions);
         JMenuItem menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
         menuOptions.add(menuItemExit);
-        menuItemExit.addActionListener(new ActionListener() { 
+        menuItemExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent){
-                System.exit(0); 
+                System.exit(0);
             }
-        });  
+        });
 
         frame.setVisible(true); //set visible after MenuBar and before buttons
 
         //Button Credits
         buttonCredits = new JButton(myResources.getString("buttonCredits"));
         buttonCredits.setBounds(10, 10, 170, 30);
-        frame.add(buttonCredits);            
+        frame.add(buttonCredits);
     }
 
 }

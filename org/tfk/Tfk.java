@@ -25,7 +25,6 @@ public class Tfk {
 
         Game game = new Game();
         game.initComponents();
-		System.out.println("Manoel");
 
     }
 
