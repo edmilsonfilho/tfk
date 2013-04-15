@@ -13,6 +13,8 @@ import javax.swing.JMenu;
 import javax.swing.JMenuItem;
 import java.util.ResourceBundle;
 import java.util.Locale;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 /**
  * The main frame class Game.
@@ -52,13 +54,18 @@ public class Game {
         menuBar.add(menuOptions);
         JMenuItem menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
         menuOptions.add(menuItemExit);
+        menuItemExit.addActionListener(new ActionListener() { 
+            public void actionPerformed(ActionEvent actionEvent){
+                System.exit(0); 
+            }
+        });  
 
         frame.setVisible(true); //set visible after MenuBar and before buttons
 
         //Button Credits
         buttonCredits = new JButton(myResources.getString("buttonCredits"));
         buttonCredits.setBounds(10, 10, 170, 30);
-        frame.add(buttonCredits);        
+        frame.add(buttonCredits);            
     }
 
 }
