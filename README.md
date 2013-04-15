@@ -25,7 +25,7 @@ Por outro lado pode ser uma fonte muito interessante de aprendizado e experiênc
 
 English:
 
-# # # Development Environment
+### Development Environment
 
 * Any text editor
 * Java 7
@@ -33,7 +33,7 @@ English:
 * Git
 * Maven
 
-# # # Attention!
+### Attention!
 
 This project will become increasingly difficult for everyone over time, including the owner.
 
