@@ -8,3 +8,4 @@ The Fellowship of the Knowledge
 * Editor de texto qualquer
 * Java 7
 * Javadoc http://docs.oracle.com/javase/7/docs/api/
+* Git
