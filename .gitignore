@@ -1,5 +1,7 @@
 *.class
 .DS_Store
+*.jar
+target/
 
 # Ignore . and ~ files except .gitignore #
 *~
