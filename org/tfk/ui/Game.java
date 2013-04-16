@@ -15,6 +15,7 @@ import java.util.ResourceBundle;
 import java.util.Locale;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.GridBagLayout;
 
 /**
  * The main frame class Game.
@@ -44,6 +45,7 @@ public class Game {
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
+        frame.setLayout(new GridBagLayout());
 
         //Menu Bar
         menuBar = new JMenuBar();
@@ -58,14 +60,14 @@ public class Game {
             public void actionPerformed(ActionEvent actionEvent){
                 System.exit(0);
             }
-        });
-
-        frame.setVisible(true); //set visible after MenuBar and before buttons
+        });       
 
         //Button Credits
         buttonCredits = new JButton(myResources.getString("buttonCredits"));
         buttonCredits.setBounds(10, 10, 170, 30);
         frame.add(buttonCredits);
+
+        frame.setVisible(true);
     }
 
 }
