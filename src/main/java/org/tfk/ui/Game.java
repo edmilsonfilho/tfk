@@ -10,12 +10,14 @@ import javax.swing.JFrame;
 import javax.swing.JButton;
 import javax.swing.JMenuBar;
 import javax.swing.JMenu;
+import javax.swing.JPanel;
 import javax.swing.JMenuItem;
 import java.util.ResourceBundle;
 import java.util.Locale;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
+import java.awt.GridBagConstraints;
 
 /**
  * The main frame class Game.
@@ -26,10 +28,11 @@ import java.awt.GridBagLayout;
 public class Game {
 
     private JFrame frame;
-    private JButton buttonCredits;
+    private JButton buttonCredits, buttonOptions, buttonStart;
     private JMenuBar menuBar;
     private JMenu menuOptions;
     private JMenuItem menuItemExit;
+    private JPanel panel;
 
     public Game() {
 
@@ -37,6 +40,7 @@ public class Game {
 
     public void initComponents() {
 
+        //Set Locale
         Locale currentLocale = new Locale("pt", "BR");
         ResourceBundle myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
 
@@ -45,8 +49,16 @@ public class Game {
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(800, 600);
-        frame.setLayout(new GridBagLayout());
 
+        //Layout
+        GridBagLayout gridBagLayout = new GridBagLayout();       
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER; //end row
+        
+        //Panel
+        panel = new JPanel();
+        panel.setLayout(gridBagLayout);
+        
         //Menu Bar
         menuBar = new JMenuBar();
         frame.setJMenuBar(menuBar);
@@ -62,11 +74,20 @@ public class Game {
             }
         });       
 
-        //Button Credits
-        buttonCredits = new JButton(myResources.getString("buttonCredits"));
-        buttonCredits.setBounds(10, 10, 170, 30);
-        frame.add(buttonCredits);
+        //Buttons
+        buttonStart = new JButton(myResources.getString("buttonStart"));
+        gridBagLayout.setConstraints(buttonStart, gridBagConstraints);
+        panel.add(buttonStart);
 
+        buttonOptions = new JButton(myResources.getString("buttonOptions"));
+        gridBagLayout.setConstraints(buttonOptions, gridBagConstraints);
+        panel.add(buttonOptions);
+
+        buttonCredits = new JButton(myResources.getString("buttonCredits"));
+        gridBagLayout.setConstraints(buttonCredits, gridBagConstraints);
+        panel.add(buttonCredits);
+        
+        frame.add(panel);
         frame.setVisible(true);
     }
 
