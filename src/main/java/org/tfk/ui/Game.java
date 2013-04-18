@@ -41,7 +41,8 @@ public class Game {
     public void initComponents() {
 
         //Set Locale
-        Locale currentLocale = new Locale("pt", "BR");
+        Locale currentLocale = new Locale("pt", "BR"); //default bt_BR - Brazilian language
+        //Locale currentLocale = new Locale("en", "US"); //to set english language remove comment of this line and comment out the line above
         ResourceBundle myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
 
         //Frame
