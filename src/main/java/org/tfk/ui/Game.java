@@ -62,6 +62,7 @@ public class Game {
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(320, 370);
+	frame.setLocation(500, 200);
 
         //Layout
         gridBagLayout = new GridBagLayout();       
@@ -131,9 +132,11 @@ public class Game {
             panelCredits.add(new JLabel("Manoel Calixto https://github.com/manoelcalixto")); 
 	    panelCredits.add(new JLabel("Maciel Melo https://github.com/MacielMelo"));
             add(panelCredits);
-            setSize(420, 120);
+            setSize(450, 140);
             setTitle(myResources.getString("buttonCredits"));
             setVisible(true);
+	    setLocation(500, 200);			
+
         }
     }
 
