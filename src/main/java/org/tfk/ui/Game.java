@@ -31,6 +31,10 @@ public class Game {
     private JFrame frame;
     private JButton buttonCredits, buttonOptions, buttonStart;
     private JMenuBar menuBar;
+    private JMenu menuLanguage;
+    private JMenu menuAlterLanguage;
+    private JMenuItem menuItemEnUS;
+    private JMenuItem menuItemPtBR;
     private JMenu menuOptions;
     private JMenuItem menuItemExit;
     private JPanel panel;
@@ -67,6 +71,15 @@ public class Game {
         frame.setJMenuBar(menuBar);
 
         //Menu Bar Itens
+        menuLanguage = new JMenu(myResources.getString("menuLanguage")); 
+        menuBar.add(menuLanguage);
+        menuAlterLanguage = new JMenu(myResources.getString("menuAlterLanguage"));
+        menuLanguage.add(menuAlterLanguage);
+        menuItemEnUS = new JMenuItem("en-US");
+        menuItemPtBR = new JMenuItem("pt-BR");
+        menuAlterLanguage.add(menuItemEnUS);
+        menuAlterLanguage.add(menuItemPtBR);
+
         menuOptions = new JMenu(myResources.getString("menuOptions"));
         menuBar.add(menuOptions);
         JMenuItem menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
