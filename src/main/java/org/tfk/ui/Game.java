@@ -12,6 +12,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenu;
 import javax.swing.JPanel;
 import javax.swing.JMenuItem;
+import javax.swing.JDialog;
+import javax.swing.JLabel;
 import java.util.ResourceBundle;
 import java.util.Locale;
 import java.awt.event.ActionEvent;
@@ -28,6 +30,8 @@ import java.awt.Insets;
  */
 public class Game {
 
+    private Locale currentLocale;
+    private ResourceBundle myResources;
     private JFrame frame;
     private JButton buttonCredits, buttonOptions, buttonStart;
     private JMenuBar menuBar;
@@ -38,6 +42,9 @@ public class Game {
     private JMenu menuOptions;
     private JMenuItem menuItemExit;
     private JPanel panel;
+    private GridBagLayout gridBagLayout;
+    private GridBagConstraints gridBagConstraints;
+
 
     public Game() {
 
@@ -46,9 +53,9 @@ public class Game {
     public void initComponents() {
 
         //Set Locale
-        Locale currentLocale = new Locale("pt", "BR"); //default bt_BR - Brazilian language
+        currentLocale = new Locale("pt", "BR"); //default bt_BR - Brazilian language
         //Locale currentLocale = new Locale("en", "US"); //to set english language remove comment of this line and comment out the line above
-        ResourceBundle myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
+        myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
 
         //Frame
         frame = new JFrame();
@@ -57,8 +64,8 @@ public class Game {
         frame.setSize(320, 370);
 
         //Layout
-        GridBagLayout gridBagLayout = new GridBagLayout();       
-        GridBagConstraints gridBagConstraints = new GridBagConstraints();
+        gridBagLayout = new GridBagLayout();       
+        gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER; //end row
         gridBagConstraints.insets = new Insets(15,0,38,0) ; //spaces between buttons
         
@@ -100,11 +107,33 @@ public class Game {
         panel.add(buttonOptions);
 
         buttonCredits = new JButton(myResources.getString("buttonCredits"));
+        buttonCredits.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent){
+                new DialogCredits().initComponents();
+            }
+        });    
         gridBagLayout.setConstraints(buttonCredits, gridBagConstraints);
         panel.add(buttonCredits);
         
         frame.add(panel);
         frame.setVisible(true);
+    }
+
+    private class DialogCredits extends JDialog{
+        public DialogCredits(){}
+
+        public void initComponents() {            
+            JPanel panelCredits = new JPanel();
+            panel.setLayout(new GridBagLayout());
+            panelCredits.add(new JLabel("Helio Frota https://github.com/heliofrota"));    
+            panelCredits.add(new JLabel("Levy Moreira https://github.com/levymoreira"));  
+            panelCredits.add(new JLabel("Leandro Nascimento https://github.com/LeandroNascimento"));  
+            panelCredits.add(new JLabel("Manoel Calixto https://github.com/manoelcalixto")); 
+            add(panelCredits);
+            setSize(420, 120);
+            setTitle(myResources.getString("buttonCredits"));
+            setVisible(true);
+        }
     }
 
 }
