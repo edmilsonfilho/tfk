@@ -18,6 +18,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
+import java.awt.Insets;
 
 /**
  * The main frame class Game.
@@ -49,12 +50,13 @@ public class Game {
         frame = new JFrame();
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
+        frame.setSize(320, 370);
 
         //Layout
         GridBagLayout gridBagLayout = new GridBagLayout();       
         GridBagConstraints gridBagConstraints = new GridBagConstraints();
         gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER; //end row
+        gridBagConstraints.insets = new Insets(15,0,38,0) ; //spaces between buttons
         
         //Panel
         panel = new JPanel();
