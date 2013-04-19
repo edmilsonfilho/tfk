@@ -129,6 +129,7 @@ public class Game {
             panelCredits.add(new JLabel("Levy Moreira https://github.com/levymoreira"));  
             panelCredits.add(new JLabel("Leandro Nascimento https://github.com/LeandroNascimento"));  
             panelCredits.add(new JLabel("Manoel Calixto https://github.com/manoelcalixto")); 
+	    panelCredits.add(new JLabel("Maciel Melo https://github.com/MacielMelo"));
             add(panelCredits);
             setSize(420, 120);
             setTitle(myResources.getString("buttonCredits"));
