@@ -3,6 +3,9 @@ TFK
 
 The Fellowship of the Knowledge
 
+![tfk](https://github.com/heliofrota/tfk/raw/master/tfk.png)
+
+
 ### Ambiente de desenvolvimento
 
 * Editor de texto qualquer
