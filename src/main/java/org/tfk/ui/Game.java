@@ -21,6 +21,9 @@ import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
 import java.awt.GridBagConstraints;
 import java.awt.Insets;
+import java.awt.GraphicsConfiguration;
+import java.awt.GraphicsDevice;
+import java.awt.GraphicsEnvironment;
 
 /**
  * The main frame class Game.
@@ -61,7 +64,7 @@ public class Game {
         frame = new JFrame();
         frame.setTitle("TFK - The Fellowship of the Knowledge");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(320, 370);
+        frame.setSize(800, 600);
         frame.setLocationRelativeTo(null);
 
         //Layout
@@ -112,6 +115,11 @@ public class Game {
 
         //Buttons
         buttonStart = new JButton(myResources.getString("buttonStart"));
+	buttonStart.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent actionEvent) {
+		    new FullScreen().initComponents();
+		}
+	});
         gridBagLayout.setConstraints(buttonStart, gridBagConstraints);
         panel.add(buttonStart);
 
@@ -164,4 +172,15 @@ public class Game {
         }
     }
 
+    private class FullScreen extends JFrame {
+
+	public void initComponents() {
+	    GraphicsEnvironment ge =  
+		GraphicsEnvironment.getLocalGraphicsEnvironment();
+	    GraphicsDevice gd = ge.getDefaultScreenDevice();
+	    gd.setFullScreenWindow(this);
+	    this.setResizable(false);
+	    this.setVisible(true);
+	}
+    }
 }
