@@ -82,6 +82,16 @@ public class Game {
         frame.setJMenuBar(menuBar);
 
         //Menu Bar Itens
+        menuOptions = new JMenu(myResources.getString("menuOptions"));
+        menuBar.add(menuOptions);
+        menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
+        menuOptions.add(menuItemExit);
+        menuItemExit.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent){
+                System.exit(0);
+            }
+        });
+        
         menuLanguage = new JMenu(myResources.getString("menuLanguage")); 
         menuBar.add(menuLanguage);
         menuAlterLanguage = new JMenu(myResources.getString("menuAlterLanguage"));
@@ -101,17 +111,7 @@ public class Game {
             public void actionPerformed(ActionEvent actionEvent){
                 changeLanguage("pt", "BR");
             }
-        }); 
-
-        menuOptions = new JMenu(myResources.getString("menuOptions"));
-        menuBar.add(menuOptions);
-        menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
-        menuOptions.add(menuItemExit);
-        menuItemExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent){
-                System.exit(0);
-            }
-        });
+        });         
 
         //Buttons
         buttonStart = new JButton(myResources.getString("buttonStart"));
