@@ -82,9 +82,9 @@ public class Game {
         frame.setJMenuBar(menuBar);
 
         //Menu Bar Itens
-        menuOptions = new JMenu(myResources.getString("menuOptions"));
+        menuOptions = new JMenu(myResources.getString("options"));
         menuBar.add(menuOptions);
-        menuItemExit = new JMenuItem(myResources.getString("menuItemExit"));
+        menuItemExit = new JMenuItem(myResources.getString("exit"));
         menuOptions.add(menuItemExit);
         menuItemExit.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent){
@@ -92,9 +92,9 @@ public class Game {
             }
         });
         
-        menuLanguage = new JMenu(myResources.getString("menuLanguage")); 
+        menuLanguage = new JMenu(myResources.getString("language")); 
         menuBar.add(menuLanguage);
-        menuAlterLanguage = new JMenu(myResources.getString("menuAlterLanguage"));
+        menuAlterLanguage = new JMenu(myResources.getString("alter"));
         menuLanguage.add(menuAlterLanguage);
 
         menuItemEnUS = new JMenuItem("en-US");
@@ -114,20 +114,20 @@ public class Game {
         });         
 
         //Buttons
-        buttonStart = new JButton(myResources.getString("buttonStart"));
-	buttonStart.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent actionEvent) {
-		    new FullScreen().initComponents();
-		}
-	});
+        buttonStart = new JButton(myResources.getString("start"));
+        buttonStart.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent actionEvent) {
+                new FullScreen().initComponents();
+            }
+        });        
         gridBagLayout.setConstraints(buttonStart, gridBagConstraints);
         panel.add(buttonStart);
 
-        buttonOptions = new JButton(myResources.getString("buttonOptions"));
+        buttonOptions = new JButton(myResources.getString("options"));
         gridBagLayout.setConstraints(buttonOptions, gridBagConstraints);
         panel.add(buttonOptions);
 
-        buttonCredits = new JButton(myResources.getString("buttonCredits"));
+        buttonCredits = new JButton(myResources.getString("credits"));
         buttonCredits.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent actionEvent){
                 new DialogCredits().initComponents();
@@ -143,29 +143,57 @@ public class Game {
     private void changeLanguage(String language, String country){
         currentLocale = new Locale(language, country);
         myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
-        buttonStart.setText(myResources.getString("buttonStart"));
-        buttonOptions.setText(myResources.getString("buttonOptions"));
-        buttonCredits.setText(myResources.getString("buttonCredits"));
-        menuLanguage.setText(myResources.getString("menuLanguage"));
-        menuAlterLanguage.setText(myResources.getString("menuAlterLanguage"));
-        menuOptions.setText(myResources.getString("menuOptions"));
-        menuItemExit.setText(myResources.getString("menuItemExit"));
+        buttonStart.setText(myResources.getString("start"));
+        buttonOptions.setText(myResources.getString("options"));
+        buttonCredits.setText(myResources.getString("credits"));
+        menuLanguage.setText(myResources.getString("language"));
+        menuAlterLanguage.setText(myResources.getString("language"));
+        menuOptions.setText(myResources.getString("options"));
+        menuItemExit.setText(myResources.getString("exit"));
     }
 
     private class DialogCredits extends JDialog{
         public DialogCredits(){
             this.setSize(450, 140);
-            this.setTitle(myResources.getString("buttonCredits"));
+            this.setTitle(myResources.getString("credits"));
             this.setLocationRelativeTo(null);
         }
 
         public void initComponents() {
+            gridBagConstraints = new GridBagConstraints();
+            gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER; 
+
             JPanel panelCredits = new JPanel();
-            panelCredits.add(new JLabel("Helio Frota https://github.com/heliofrota"));
-            panelCredits.add(new JLabel("Levy Moreira https://github.com/levymoreira"));
-            panelCredits.add(new JLabel("Leandro Nascimento https://github.com/LeandroNascimento"));
-            panelCredits.add(new JLabel("Manoel Calixto https://github.com/manoelcalixto")); 
-            panelCredits.add(new JLabel("Maciel Melo https://github.com/MacielMelo"));
+            panelCredits.setLayout(gridBagLayout);
+
+            JLabel labelHelioFrota = new JLabel("Helio Frota https://github.com/heliofrota");
+            gridBagLayout.setConstraints(labelHelioFrota, gridBagConstraints);
+            panelCredits.add(labelHelioFrota);
+
+            JLabel labelLevyMoreira = new JLabel("Levy Moreira https://github.com/levymoreira");
+            gridBagLayout.setConstraints(labelLevyMoreira, gridBagConstraints);
+            panelCredits.add(labelLevyMoreira);
+
+            JLabel labelLeandroNascimento = new JLabel("Leandro Nascimento https://github.com/LeandroNascimento");
+            gridBagLayout.setConstraints(labelLeandroNascimento, gridBagConstraints);
+            panelCredits.add(labelLeandroNascimento);
+
+            JLabel labelManoelCalixto = new JLabel("Manoel Calixto https://github.com/manoelcalixto");
+            gridBagLayout.setConstraints(labelManoelCalixto, gridBagConstraints);
+            panelCredits.add(labelManoelCalixto);
+
+            JLabel labelMacielMelo= new JLabel("Maciel Melo https://github.com/MacielMelo");
+            gridBagLayout.setConstraints(labelMacielMelo, gridBagConstraints);
+            panelCredits.add(labelMacielMelo);
+
+            JButton buttonExit = new JButton(myResources.getString("exit"));
+            buttonExit.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent){
+                   setVisible(false);
+                }
+            });
+            gridBagLayout.setConstraints(buttonExit, gridBagConstraints);
+            panelCredits.add(buttonExit);
 
             this.add(panelCredits);
             this.setVisible(true);
@@ -173,14 +201,12 @@ public class Game {
     }
 
     private class FullScreen extends JFrame {
-
-	public void initComponents() {
-	    GraphicsEnvironment ge =  
-		GraphicsEnvironment.getLocalGraphicsEnvironment();
-	    GraphicsDevice gd = ge.getDefaultScreenDevice();
-	    gd.setFullScreenWindow(this);
-	    this.setResizable(false);
-	    this.setVisible(true);
-	}
+        public void initComponents() {
+            GraphicsEnvironment ge =  GraphicsEnvironment.getLocalGraphicsEnvironment();
+            GraphicsDevice gd = ge.getDefaultScreenDevice();
+            gd.setFullScreenWindow(this);
+            this.setResizable(false);
+            this.setVisible(true);
+        }
     }
 }
