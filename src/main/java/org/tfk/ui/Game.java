@@ -166,23 +166,23 @@ public class Game {
             JPanel panelCredits = new JPanel();
             panelCredits.setLayout(gridBagLayout);
 
-            JLabel labelHelioFrota = new JLabel("Helio Frota https://github.com/heliofrota");
+            LabelLink labelHelioFrota = new LabelLink("Helio Frota https://github.com/heliofrota");
             gridBagLayout.setConstraints(labelHelioFrota, gridBagConstraints);
             panelCredits.add(labelHelioFrota);
 
-            JLabel labelLevyMoreira = new JLabel("Levy Moreira https://github.com/levymoreira");
+            LabelLink labelLevyMoreira = new LabelLink("Levy Moreira https://github.com/levymoreira");
             gridBagLayout.setConstraints(labelLevyMoreira, gridBagConstraints);
             panelCredits.add(labelLevyMoreira);
 
-            JLabel labelLeandroNascimento = new JLabel("Leandro Nascimento https://github.com/LeandroNascimento");
+            LabelLink labelLeandroNascimento = new LabelLink("Leandro Nascimento https://github.com/LeandroNascimento");
             gridBagLayout.setConstraints(labelLeandroNascimento, gridBagConstraints);
             panelCredits.add(labelLeandroNascimento);
 
-            JLabel labelManoelCalixto = new JLabel("Manoel Calixto https://github.com/manoelcalixto");
+            LabelLink labelManoelCalixto = new LabelLink("Manoel Calixto https://github.com/manoelcalixto");
             gridBagLayout.setConstraints(labelManoelCalixto, gridBagConstraints);
             panelCredits.add(labelManoelCalixto);
 
-            JLabel labelMacielMelo= new JLabel("Maciel Melo https://github.com/MacielMelo");
+            LabelLink labelMacielMelo= new LabelLink("Maciel Melo https://github.com/MacielMelo");
             gridBagLayout.setConstraints(labelMacielMelo, gridBagConstraints);
             panelCredits.add(labelMacielMelo);
 
