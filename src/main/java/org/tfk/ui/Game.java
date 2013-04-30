@@ -14,8 +14,10 @@ import javax.swing.JPanel;
 import javax.swing.JMenuItem;
 import javax.swing.JDialog;
 import javax.swing.JLabel;
+
 import java.util.ResourceBundle;
 import java.util.Locale;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.GridBagLayout;
@@ -25,6 +27,10 @@ import java.awt.GraphicsConfiguration;
 import java.awt.GraphicsDevice;
 import java.awt.GraphicsEnvironment;
 
+import org.tfk.util.TFKUtils;
+import org.tfk.util.LocaleChangeListener;
+import org.tfk.util.LocaleChangeEvent;
+
 /**
  * The main frame class Game.
  *
@@ -32,130 +38,128 @@ import java.awt.GraphicsEnvironment;
  * Edited on GNU/Emacs.
  */
 public class Game {
-
-    private Locale currentLocale;
-    private ResourceBundle myResources;
-    private JFrame frame;
-    private JButton buttonCredits, buttonOptions, buttonStart;
-    private JMenuBar menuBar;
-    private JMenu menuLanguage;
-    private JMenu menuAlterLanguage;
-    private JMenuItem menuItemEnUS;
-    private JMenuItem menuItemPtBR;
-    private JMenu menuOptions;
-    private JMenuItem menuItemExit;
-    private JPanel panel;
+  
     private GridBagLayout gridBagLayout;
     private GridBagConstraints gridBagConstraints;
-
-
+    
     public Game() {
-
-    }
-
-    public void initComponents() {
-
         //Set Locale
-        currentLocale = new Locale("pt", "BR"); //default bt_BR - Brazilian language
-        //currentLocale = new Locale("en", "US"); //to set english language remove comment of this line and comment out the line above
-        myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
-
-        //Frame
-        frame = new JFrame();
-        frame.setTitle("TFK - The Fellowship of the Knowledge");
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(800, 600);
-        frame.setLocationRelativeTo(null);
-
-        //Layout
-        gridBagLayout = new GridBagLayout();
-        gridBagConstraints = new GridBagConstraints();
-        gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER; //end row
-        gridBagConstraints.insets = new Insets(15,0,38,0) ; //spaces between buttons
+        TFKUtils.changeLanguage("pt", "BR");
         
-        //Panel
-        panel = new JPanel();
-        panel.setLayout(gridBagLayout);
-        
-        //Menu Bar
-        menuBar = new JMenuBar();
-        frame.setJMenuBar(menuBar);
-
-        //Menu Bar Itens
-        menuOptions = new JMenu(myResources.getString("options"));
-        menuBar.add(menuOptions);
-        menuItemExit = new JMenuItem(myResources.getString("exit"));
-        menuOptions.add(menuItemExit);
-        menuItemExit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent){
-                System.exit(0);
-            }
-        });
-        
-        menuLanguage = new JMenu(myResources.getString("language")); 
-        menuBar.add(menuLanguage);
-        menuAlterLanguage = new JMenu(myResources.getString("alter"));
-        menuLanguage.add(menuAlterLanguage);
-
-        menuItemEnUS = new JMenuItem("en-US");
-        menuAlterLanguage.add(menuItemEnUS);
-        menuItemEnUS.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent){
-                changeLanguage("en", "US");
-            }
-        });  
-
-        menuItemPtBR = new JMenuItem("pt-BR");
-        menuAlterLanguage.add(menuItemPtBR);
-        menuItemPtBR.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent){
-                changeLanguage("pt", "BR");
-            }
-        });         
-
-        //Buttons
-        buttonStart = new JButton(myResources.getString("start"));
-        buttonStart.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent) {
-                new FullScreen().initComponents();
-            }
-        });        
-        gridBagLayout.setConstraints(buttonStart, gridBagConstraints);
-        panel.add(buttonStart);
-
-        buttonOptions = new JButton(myResources.getString("options"));
-        gridBagLayout.setConstraints(buttonOptions, gridBagConstraints);
-        panel.add(buttonOptions);
-
-        buttonCredits = new JButton(myResources.getString("credits"));
-        buttonCredits.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent actionEvent){
-                new DialogCredits().initComponents();
-            }
-        });
-        gridBagLayout.setConstraints(buttonCredits, gridBagConstraints);
-
-        panel.add(buttonCredits);        
-        frame.add(panel);
-        frame.setVisible(true);
+        //Open initial screen
+        new MainFrame(); 
     }
+        
+    private class MainFrame extends JFrame implements LocaleChangeListener{
 
-    private void changeLanguage(String language, String country){
-        currentLocale = new Locale(language, country);
-        myResources = ResourceBundle.getBundle("org.tfk.i18n.messages", currentLocale);
-        buttonStart.setText(myResources.getString("start"));
-        buttonOptions.setText(myResources.getString("options"));
-        buttonCredits.setText(myResources.getString("credits"));
-        menuLanguage.setText(myResources.getString("language"));
-        menuAlterLanguage.setText(myResources.getString("language"));
-        menuOptions.setText(myResources.getString("options"));
-        menuItemExit.setText(myResources.getString("exit"));
+        JButton buttonCredits, buttonOptions, buttonStart;
+        JMenuBar menuBar;
+        JMenu menuLanguage;
+        JMenu menuAlterLanguage;
+        JMenuItem menuItemEnUS;
+        JMenuItem menuItemPtBR;
+        JMenu menuOptions;
+        JMenuItem menuItemExit;
+        JPanel panel;       
+    
+        public MainFrame(){
+            TFKUtils.addLocaleChangeListener(this);
+            this.initComponents();        
+        }
+
+        public void initComponents() {          
+            //Frame           
+            this.setTitle("TFK - The Fellowship of the Knowledge");
+            this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            this.setSize(800, 600);
+            this.setLocationRelativeTo(null);
+
+            //Layout
+            gridBagLayout = new GridBagLayout();
+            gridBagConstraints = new GridBagConstraints();
+            gridBagConstraints.gridwidth = GridBagConstraints.REMAINDER; //end row
+            gridBagConstraints.insets = new Insets(15,0,38,0) ; //spaces between buttons
+        
+            //Panel
+            panel = new JPanel();
+            panel.setLayout(gridBagLayout);
+        
+            //Menu Bar
+            menuBar = new JMenuBar();
+            this.setJMenuBar(menuBar);
+
+            //Menu Bar Itens
+            menuOptions = new JMenu(TFKUtils.getResString("options"));
+            menuBar.add(menuOptions);
+            menuItemExit = new JMenuItem(TFKUtils.getResString("exit"));
+            menuOptions.add(menuItemExit);
+            menuItemExit.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent){
+                    System.exit(0);
+                }
+            });
+        
+            menuLanguage = new JMenu(TFKUtils.getResString("language")); 
+            menuBar.add(menuLanguage);
+            menuAlterLanguage = new JMenu(TFKUtils.getResString("alter"));
+            menuLanguage.add(menuAlterLanguage);
+
+            menuItemEnUS = new JMenuItem("en-US");
+            menuAlterLanguage.add(menuItemEnUS);
+            menuItemEnUS.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent){
+                    TFKUtils.changeLanguage("en", "US");
+                }
+            });  
+
+            menuItemPtBR = new JMenuItem("pt-BR");
+            menuAlterLanguage.add(menuItemPtBR);
+            menuItemPtBR.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent){
+                    TFKUtils.changeLanguage("pt", "BR");
+                }
+            });         
+
+            //Buttons
+            buttonStart = new JButton(TFKUtils.getResString("start"));
+            buttonStart.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent) {
+                    new FullScreen().initComponents();
+                }
+            });        
+            gridBagLayout.setConstraints(buttonStart, gridBagConstraints);
+            panel.add(buttonStart);
+
+            buttonOptions = new JButton(TFKUtils.getResString("options"));
+            gridBagLayout.setConstraints(buttonOptions, gridBagConstraints);
+            panel.add(buttonOptions);
+
+            buttonCredits = new JButton(TFKUtils.getResString("credits"));
+            buttonCredits.addActionListener(new ActionListener() {
+                public void actionPerformed(ActionEvent actionEvent){
+                    new DialogCredits().initComponents();
+                }
+            });
+            gridBagLayout.setConstraints(buttonCredits, gridBagConstraints);
+
+            panel.add(buttonCredits);        
+            this.add(panel);
+            
+            this.setVisible(true);
+        }
+        
+        @Override
+        public void localeChanged(LocaleChangeEvent event) {   
+            this.getContentPane().removeAll(); //remove all components for init add again
+            this.initComponents();   
+        }   
     }
 
     private class DialogCredits extends JDialog{
+
         public DialogCredits(){
             this.setSize(450, 140);
-            this.setTitle(myResources.getString("credits"));
+            this.setTitle(TFKUtils.getResString("credits"));
             this.setLocationRelativeTo(null);
         }
 
@@ -186,7 +190,7 @@ public class Game {
             gridBagLayout.setConstraints(labelMacielMelo, gridBagConstraints);
             panelCredits.add(labelMacielMelo);
 
-            JButton buttonExit = new JButton(myResources.getString("exit"));
+            JButton buttonExit = new JButton(TFKUtils.getResString("exit"));
             buttonExit.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent actionEvent){
                    setVisible(false);

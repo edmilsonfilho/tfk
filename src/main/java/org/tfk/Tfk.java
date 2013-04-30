@@ -22,11 +22,7 @@ public class Tfk {
     * @param String[] args
     **/
     public static void main(String[] args){
-
-        Game game = new Game();
-        game.initComponents();
-	System.out.println("Alguma coisa");
-
+        new Game();
     }
 
 }
