@@ -7,6 +7,7 @@
 package org.tfk;
 
 import org.tfk.ui.*;
+import org.tfk.sound.Midi;
 
 /**
  * The main class Tfk.
@@ -21,6 +22,11 @@ public class Tfk {
     * @param String[] args
     **/
     public static void main(String[] args){
+        try {
+           new Midi().play();
+        } catch(Exception e) {
+          //TODO add java.util.logging aqui..
+        }
         new Game();
     }
 
