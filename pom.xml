@@ -46,14 +46,17 @@
                 </executions>
                 <configuration>
                     <executable>java</executable>
-                    <workingDirectory>/target</workingDirectory>
+                    <!--<workingDirectory>/target</workingDirectory>-->
                     <mainClass>org.tfk.Tfk</mainClass>
                     <arguments>
-                        <argument>-jar</argument>
-                        <argument>${project.build.directory}/${project.build.finalName}.jar</argument>
+                        <argument>-splash:splashscreen.png</argument>
+                        <argument>org.tfk.Tfk</argument>
+                        <!--<argument>-jar</argument>
+                        <argument>${project.build.directory}/${project.build.finalName}.jar</argument>-->
                     </arguments>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
