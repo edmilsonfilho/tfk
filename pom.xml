@@ -50,6 +50,8 @@
                     <mainClass>org.tfk.Tfk</mainClass>
                     <arguments>
                         <argument>-splash:splashscreen.png</argument>
+						<argument>-classpath</argument>
+						<classpath />
                         <argument>org.tfk.Tfk</argument>
                         <!--<argument>-jar</argument>
                         <argument>${project.build.directory}/${project.build.finalName}.jar</argument>-->
