@@ -18,7 +18,6 @@ public class Tfk {
 
     /**
     * Método que inicializa o programa.
-    * Ele simplesmente imprime uma mensagem.
     * @param String[] args
     **/
     public static void main(String[] args){
