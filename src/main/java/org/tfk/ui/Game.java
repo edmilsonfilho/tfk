@@ -30,6 +30,10 @@ import java.awt.GraphicsEnvironment;
 import org.tfk.util.TFKUtils;
 import org.tfk.util.LocaleChangeListener;
 import org.tfk.util.LocaleChangeEvent;
+import java.awt.image.BufferedImage;
+import java.awt.Graphics2D;
+import java.io.File;
+import javax.imageio.ImageIO;
 
 /**
  * The main frame class Game.
@@ -73,7 +77,7 @@ public class Game {
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(800, 600);
             this.setLocationRelativeTo(null);
-            //this.add(new Image("warrior.png"));
+
 
             //Layout
             gridBagLayout = new GridBagLayout();
@@ -145,6 +149,22 @@ public class Game {
 
             panel.add(buttonCredits);
             this.add(panel);
+
+            JPanel p = new JPanel();
+            try {
+            File f = new File("warrior.png");
+            BufferedImage bi = ImageIO.read(f);
+            Graphics2D big = bi.createGraphics();
+            p.paint(big);
+
+            //big.paint();
+            //big.drawImage(bi, null, this);
+            this.getContentPane().paint(big);
+            } catch(Exception e) {
+                System.out.println(e.getMessage());
+            }
+            //this.add(p);
+
 
             this.setVisible(true);
         }
