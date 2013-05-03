@@ -73,6 +73,7 @@ public class Game {
             this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             this.setSize(800, 600);
             this.setLocationRelativeTo(null);
+            //this.add(new Image("warrior.png"));
 
             //Layout
             gridBagLayout = new GridBagLayout();
