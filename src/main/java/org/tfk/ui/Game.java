@@ -215,6 +215,10 @@ public class Game {
             gridBagLayout.setConstraints(labelThiagoRocha, gridBagConstraints);
             panelCredits.add(labelThiagoRocha);
 
+ 	    JLabel labelWallysonBatista = new JLabel("Wallyson Batista https://github.com/wallyson2712");
+            gridBagLayout.setConstraints(labelWallysonBatista, gridBagConstraints);
+            panelCredits.add(labelWallysonBatista);
+
             JButton buttonExit = new JButton(TFKUtils.getResString("exit"));
             buttonExit.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent actionEvent){
