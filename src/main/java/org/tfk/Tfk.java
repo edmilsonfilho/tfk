@@ -28,8 +28,6 @@ public class Tfk {
           //TODO add java.util.logging aqui..
         }
         new Game();
-
-	System.out.println("Teste Wallyson");
     }
 
 }
