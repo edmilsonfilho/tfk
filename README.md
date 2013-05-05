@@ -3,11 +3,14 @@ TFK
 
 The Fellowship of the Knowledge
 
+![tfk](https://github.com/heliofrota/tfk/raw/master/tfk.png)
+
 ### Ambiente de desenvolvimento
 
 * Editor de texto qualquer
 * Java 7
 * Javadoc http://docs.oracle.com/javase/7/docs/api/
+* JEDI http://jedi.wv.com.br/
 * Git
 * Maven
 
@@ -30,6 +33,7 @@ English:
 * Any text editor
 * Java 7
 * Javadoc http://docs.oracle.com/javase/7/docs/api/
+* JEDI http://jedi.wv.com.br/
 * Git
 * Maven
 

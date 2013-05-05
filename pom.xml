@@ -11,7 +11,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.tfk</groupId>
     <artifactId>tfk</artifactId>
-    <version>0.3.1</version>
+    <version>0.4.1</version>
     <packaging>jar</packaging>
     <name>tfk</name>
 
@@ -46,14 +46,16 @@
                 </executions>
                 <configuration>
                     <executable>java</executable>
-                    <workingDirectory>/target</workingDirectory>  
-                    <mainClass>org.tfk.Tfk</mainClass>          
+                    <mainClass>org.tfk.Tfk</mainClass>
                     <arguments>
-                        <argument>-jar</argument>
-                        <argument>${project.build.directory}/${project.build.finalName}.jar</argument>
-                    </arguments>  
+                        <argument>-splash:splashscreen.png</argument>
+                        <argument>-classpath</argument>
+                        <classpath />
+                        <argument>org.tfk.Tfk</argument>
+                    </arguments>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
