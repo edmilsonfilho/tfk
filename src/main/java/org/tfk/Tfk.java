@@ -22,19 +22,14 @@ public class Tfk {
     * @param String[] args
     **/
     public static void main(String[] args){
-<<<<<<< HEAD
 
-        Game game = new Game();
-        game.initComponents();
-
-=======
         try {
            new Midi().play();
         } catch(Exception e) {
           //TODO add java.util.logging aqui..
         }
         new Game();
->>>>>>> 9e401a784c888e7ef93433166741c36670414fb1
+
     }
 
 }
