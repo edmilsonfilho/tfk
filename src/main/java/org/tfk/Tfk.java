@@ -9,6 +9,9 @@ package org.tfk;
 import org.tfk.ui.*;
 import org.tfk.sound.Midi;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 /**
  * The main class Tfk.
  *
@@ -26,7 +29,7 @@ public class Tfk {
         try {
            new Midi().play();
         } catch(Exception e) {
-          //TODO add java.util.logging aqui..
+          Logger.getLogger("", null).log(Level.WARNING, "Midi Play Error. Message: " + e.getMessage());
         }
         new Game();
 

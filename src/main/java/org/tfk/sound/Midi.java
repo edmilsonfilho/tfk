@@ -29,16 +29,11 @@ public class Midi {
            sequencer.open();
         }
 
-        try {
-            URL url = Midi.class.getResource("x.mid");
-            File file = new File(url.getPath());
-            Sequence sequence = MidiSystem.getSequence(file);
-            sequencer.setSequence(sequence);
-            sequencer.start();
-        } catch (Exception e) {
-            System.out.println(e.getMessage());
-        }
-
+        URL url = Midi.class.getResource("x.mid");
+        File file = new File(url.getPath());
+        Sequence sequence = MidiSystem.getSequence(file);
+        sequencer.setSequence(sequence);
+        sequencer.start();
     }
 
 }
