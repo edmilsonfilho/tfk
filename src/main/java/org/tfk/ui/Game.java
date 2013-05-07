@@ -179,7 +179,7 @@ public class Game {
     private class DialogCredits extends JDialog{
 
         public DialogCredits(){
-            this.setSize(450, 140);
+            this.setSize(450, 170);
             this.setTitle(TFKUtils.getResString("credits"));
             this.setLocationRelativeTo(null);
         }
