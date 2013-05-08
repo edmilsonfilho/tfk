@@ -21,7 +21,7 @@ import java.util.logging.Level;
 public class Tfk {
 
     /**
-    * Método que inicializa o programa.
+    * Method that starts the program.
     * @param String[] args
     **/
     public static void main(String[] args){
