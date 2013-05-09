@@ -67,8 +67,6 @@ public class Game {
         JMenuItem menuItemExit;
         JPanel panel;
 
-        File f;
-        BufferedImage bi;
 	
         public MainFrame(){
             TFKUtils.addLocaleChangeListener(this);
@@ -153,6 +151,7 @@ public class Game {
 
             panel.add(buttonCredits);
             this.add(panel);
+            this.add(new BackgroundPanel());
 
             /*JPanel p = new JPanel();
             try {
@@ -182,6 +181,21 @@ public class Game {
             this.initComponents();
         }
 
+	/* public void paint(Graphics g) {  
+            super.paint(g);
+	    try{
+                f = new File("warrior.png");
+                bi = ImageIO.read(f);
+	    } catch(Exception e) {}
+            g.drawImage(bi, 0, 0, this);  
+	   }*/ 
+
+    }
+
+    private class BackgroundPanel extends JPanel {
+        File f;
+        BufferedImage bi;
+
         public void paint(Graphics g) {  
             super.paint(g);
 	    try{
@@ -190,9 +204,7 @@ public class Game {
 	    } catch(Exception e) {}
             g.drawImage(bi, 0, 0, this);  
         } 
-
     }
-
 
     private class DialogCredits extends JDialog{
 
