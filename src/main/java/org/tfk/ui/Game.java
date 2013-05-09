@@ -183,6 +183,7 @@ public class Game {
         }
 
         public void paint(Graphics g) {  
+            super.paint(g);
 	    try{
                 f = new File("warrior.png");
                 bi = ImageIO.read(f);
