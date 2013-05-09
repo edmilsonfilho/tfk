@@ -5,7 +5,7 @@ The Fellowship of the Knowledge
 
 [Project Site](http://heliofrota.github.io/tfk/)
 
-![tfk](https://github.com/heliofrota/tfk/raw/master/tfk.png)
+![tfk](https://github.com/heliofrota/tfk/raw/master/o_0.png)
 
 ### Ambiente de desenvolvimento
 
