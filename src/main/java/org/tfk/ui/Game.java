@@ -32,6 +32,7 @@ import org.tfk.util.LocaleChangeListener;
 import org.tfk.util.LocaleChangeEvent;
 import java.awt.image.BufferedImage;
 import java.awt.Graphics2D;
+import java.awt.Graphics;
 import java.io.File;
 import javax.imageio.ImageIO;
 
@@ -66,6 +67,9 @@ public class Game {
         JMenuItem menuItemExit;
         JPanel panel;
 
+        File f;
+        BufferedImage bi;
+	
         public MainFrame(){
             TFKUtils.addLocaleChangeListener(this);
             this.initComponents();
@@ -150,20 +154,23 @@ public class Game {
             panel.add(buttonCredits);
             this.add(panel);
 
-            JPanel p = new JPanel();
+            /*JPanel p = new JPanel();
             try {
             File f = new File("warrior.png");
             BufferedImage bi = ImageIO.read(f);
             Graphics2D big = bi.createGraphics();
-            p.paint(big);
+            //p.paint(big);
 
             //big.paint();
-            //big.drawImage(bi, null, this);
-            this.getContentPane().paint(big);
+            big.drawImage(bi, 0, 0, this);
+
+            JPanel x = new JPanel();
+            
+            this.getContentPane().paintComponent(big);
             } catch(Exception e) {
                 System.out.println(e.getMessage());
             }
-            //this.add(p);
+            //this.add(p);*/
 
 
             this.setVisible(true);
@@ -174,7 +181,17 @@ public class Game {
             this.getContentPane().removeAll(); //remove all components for init add again
             this.initComponents();
         }
+
+        public void paint(Graphics g) {  
+	    try{
+                f = new File("warrior.png");
+                bi = ImageIO.read(f);
+	    } catch(Exception e) {}
+            g.drawImage(bi, 0, 0, this);  
+        } 
+
     }
+
 
     private class DialogCredits extends JDialog{
 
